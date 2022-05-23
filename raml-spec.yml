@@ -1,0 +1,28 @@
+#%RAML 0.8
+---
+title: 'Sample RAML 0.8'
+version: '1.0.0'
+baseUri: http://localhost:3000
+mediaType: application/json
+schemas:
+  - User: |
+      {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+/user:
+  /{userID}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+                schema: User
