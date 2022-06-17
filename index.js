@@ -24,7 +24,7 @@ app.get('/raml.zip', async (req, res) => {
 
 app.get('/user/:userId', (req, res) => {
   // get userId from request params or query string or body
-  const userId = req.params?.userId || req.body?.userId;
+  const userId = req.params?.userID || req.body?.userID;
   res.send(`User ${userId}`);
 });
 
