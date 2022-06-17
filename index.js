@@ -24,8 +24,9 @@ app.get('/raml.zip', async (req, res) => {
 
 app.get('/user/:userId', (req, res) => {
   // get userId from request params or query string or body
-  const userId = req.params?.userID || req.body?.userID;
-  res.send(`User ${userId}`);
+  const userID = req.params?.userID || req.body?.userID;
+  console.log(userID);
+  res.send(`User ${userID}`);
 });
 
 // create PUT route for /user/:userId
