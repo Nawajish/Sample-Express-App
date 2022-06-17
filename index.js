@@ -22,6 +22,10 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/raml-spec.yml.gz');
 });
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Server listening on port 3000');
+app.get('/user/:id', (req, res) => {
+  res.send(`User ${req.params.id}`);
+});
+
+app.listen(process.env.PORT || 3131, () => {
+    console.log('Server listening on port 3131');
 });
