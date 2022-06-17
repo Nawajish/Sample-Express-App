@@ -22,8 +22,10 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/raml-spec.yml.gz');
 });
 
-app.get('/user/:id', (req, res) => {
-  res.send(`User ${req.params.id}`);
+app.get('/user/:userId', (req, res) => {
+  // get userId from request params or query string or body
+  const userId = req.params?.userId || req.body?.userId;
+  res.send(`User ${userId}`);
 });
 
 app.listen(process.env.PORT || 3131, () => {
