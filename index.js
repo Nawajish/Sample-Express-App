@@ -22,7 +22,7 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/raml-spec.yml.gz');
 });
 
-app.get('/user/:userId', (req, res) => {
+app.get('/user/:userID', (req, res) => {
   // get userId from request params or query string or body
   const userID = req.params?.userID || req.body?.userID;
   console.log(userID);
