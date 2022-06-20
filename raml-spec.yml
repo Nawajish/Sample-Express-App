@@ -19,7 +19,7 @@ schemas:
         }
       }
 /user:
-  /{userID}:
+  /{id}:
     get:
       responses:
         200:
