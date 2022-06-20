@@ -43,6 +43,11 @@ app.delete('/user/:userId', (req, res) => {
   res.send(`User ${userId}`);
 });
 
+app.post('/testDummy', (req, res) => {
+  console.log(req);
+  res.send(201);
+})
+
 app.listen(process.env.PORT || 3131, () => {
   console.log('Server listening on port 3131');
 });
