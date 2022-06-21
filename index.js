@@ -15,6 +15,13 @@ app.get('/raml', (req, res) => {
   res.send(ramlSpecString);
 });
 
+app.get('/swagger', (req, res) => {
+  const swaggerSpec = fs.readFileSync('./swagger-spec.yml', 'utf8');
+  const swaggerSpecString = swaggerSpec.split('\r\n').join('\n');
+
+  res.send(swaggerSpecString);
+});
+
 app.get('/raml.zip', async (req, res) => {
   await createZip();
 
