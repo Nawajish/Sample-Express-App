@@ -47,6 +47,7 @@ app.post('/testDummy', (req, res) => {
   console.log(req);
   console.log(req.body);
   console.log(req.data);
+  // console.log(req.formData);
   console.log(req.formData);
   res.send(201);
 })
