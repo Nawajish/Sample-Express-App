@@ -22,35 +22,16 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/raml-spec.yml.gz');
 });
 
-app.get('/user/:userID', (req, res) => {
-  // get userId from request params or query string or body
-  const userID = req.params?.userID || req.body?.userID;
-  console.log(userID);
-  res.send(`User ${userID}`);
-});
-
-// create PUT route for /user/:userId
-app.put('/user/:userId', (req, res) => {
-  // get userId from request params or query string or body
-  const userId = req.params?.userId || req.body?.userId;
-  res.send(`User ${userId}`);
-});
-
-// create DELETE route for /user/:userId
-app.delete('/user/:userId', (req, res) => {
-  // get userId from request params or query string or body
-  const userId = req.params?.userId || req.body?.userId;
-  res.send(`User ${userId}`);
-});
-
-app.post('/testDummy', (req, res) => {
-  console.log(req);
-  console.log(req.body);
-  console.log(req.data);
-  // console.log(req.formData);
-  console.log(req.formData);
-  res.send(201);
+app.get('/users', (req, res) => {
+  res.send('Users');
 })
+
+app.get('/user/:id', (req, res) => {
+  // get id from request params or query string or body
+  const id = req.params?.id || req.body?.id;
+  console.log(id);
+  res.send(`User ${id}`);
+});
 
 app.listen(process.env.PORT || 3131, () => {
   console.log('Server listening on port 3131');
