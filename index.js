@@ -30,7 +30,7 @@ app.get('/user/:id', (req, res) => {
   res.send('Specific user details');
 });
 
-app.get('/user', (req, res) => {
+app.get('/users', (req, res) => {
   res.send('Mock user details')
 })
 
