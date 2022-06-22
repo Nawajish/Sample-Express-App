@@ -2,7 +2,7 @@
 ---
 title: 'Sample RAML 0.8'
 version: '1.0.0'
-baseUri: http://localhost:3000
+baseUri: https://express-app-returning-zip.herokuapp.com
 mediaType: application/json
 schemas:
   - User: |
