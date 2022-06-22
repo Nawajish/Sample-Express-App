@@ -24,9 +24,10 @@ app.get('/raml.zip', async (req, res) => {
 
 app.get('/user/:id', (req, res) => {
   // get id from request params or query string or body
-  const id = req.params?.id || req.body?.id;
-  console.log(id);
-  res.send(`User ${id}`);
+  // const id = req.params?.id || req.body?.id;
+  // console.log(id);
+  // res.send(`User ${id}`);
+  res.send('User accepted');
 });
 
 app.listen(process.env.PORT || 3131, () => {
