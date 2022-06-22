@@ -29,10 +29,6 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/raml-spec.yml.gz');
 });
 
-app.get('/users', (req, res) => {
-  res.send('Users');
-})
-
 app.get('/user/:id', (req, res) => {
   // get id from request params or query string or body
   const id = req.params?.id || req.body?.id;
