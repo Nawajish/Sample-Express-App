@@ -18,15 +18,6 @@ schemas:
           }
         }
       }
-/users:
-  get:
-    description: 'Get all users'
-    responses:
-      200:
-        body:
-          type: array
-          items:
-            $ref: '#/schemas/User'
 /user:
   /{id}:
     get:
