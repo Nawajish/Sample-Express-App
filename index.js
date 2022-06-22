@@ -27,8 +27,12 @@ app.get('/user/:id', (req, res) => {
   // const id = req.params?.id || req.body?.id;
   // console.log(id);
   // res.send(`User ${id}`);
-  res.send('User accepted');
+  res.send('Specific user details');
 });
+
+app.get('/user', (req, res) => {
+  res.send('Mock user details')
+})
 
 app.listen(process.env.PORT || 3131, () => {
   console.log('Server listening on port 3131');
