@@ -26,6 +26,21 @@ schemas:
           body:
             application/json:
                 schema: User
+  queryParameters:
+    id
+      displayName: User ID
+      type: number
+      description: ID of an user
+      example: 123
+      required: false
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "userId": 123
+                }
 /users:
   get:
     responses:

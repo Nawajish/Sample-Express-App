@@ -27,6 +27,7 @@ app.get('/user/:id', (req, res) => {
   // const id = req.params?.id || req.body?.id;
   // console.log(id);
   // res.send(`User ${id}`);
+  console.log(req.query);
   res.send('Specific user details');
 });
 
