@@ -24,13 +24,17 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/swagger-spec.yml.gz');
 });
 
-app.get('/user/:id', (req, res) => {
+app.get('/user/:id/order', (req, res) => {
   // get id from request params or query string or body
   // const id = req.params?.id || req.body?.id;
   // console.log(id);
   // res.send(`User ${id}`);
+  console.log(req.params);
   console.log(req.query);
-  res.send('Specific user details');
+  res.send({
+    userId: req.params.id,
+    orderId: req.query.orderId
+  });
 });
 
 app.get('/store/inventory', (req, res) => {
