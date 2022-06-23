@@ -1,6 +1,8 @@
 #%RAML 0.8
-title: Swagger
-version: v1
+title: 'Swagger'
+version: 'v1'
+baseUri: https://express-app-returning-zip.herokuapp.com
+mediaType: application/json
 schemas: 
     - 
         Order: |

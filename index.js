@@ -9,7 +9,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/raml', (req, res) => {
-  const ramlSpec = fs.readFileSync('./raml-spec.yml', 'utf8');
+  // const ramlSpec = fs.readFileSync('./raml-spec.yml', 'utf8');
+  const ramlSpec = fs.readFileSync('./swagger-spec.yml', 'utf8');
   const ramlSpecString = ramlSpec.split('\r\n').join('\n');
 
   res.send(ramlSpecString);
@@ -19,7 +20,8 @@ app.get('/raml.zip', async (req, res) => {
   await createZip();
 
   res.set('Content-Type', 'application/zip');
-  res.sendFile(__dirname + '/raml-spec.yml.gz');
+  // res.sendFile(__dirname + '/raml-spec.yml.gz');
+  res.sendFile(__dirname + '/swagger-spec.yml.gz');
 });
 
 app.get('/user/:id', (req, res) => {
@@ -30,6 +32,12 @@ app.get('/user/:id', (req, res) => {
   console.log(req.query);
   res.send('Specific user details');
 });
+
+app.get('/store/inventory', (req, res) => {
+  res.send({
+    store: 1
+  });
+})
 
 app.get('/users', (req, res) => {
   res.send('Mock user details')
