@@ -30,6 +30,9 @@ app.get('/user/:userId/order', (req, res) => {
 
   const { queryParameters, uriParameters } = params._testaction.input.formData;
 
+  console.log(queryParameters);
+  console.log(uriParameters);
+
   res.send({
     userId: queryParameters.orderId,
     orderId: uriParameters.userId
