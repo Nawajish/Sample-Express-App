@@ -24,7 +24,7 @@ app.get('/raml.zip', async (req, res) => {
   res.sendFile(__dirname + '/swagger-spec.yml.gz');
 });
 
-app.get('/user/:id/order', (req, res) => {
+app.get('/user/:userId/order', (req, res) => {
   // get id from request params or query string or body
   // const id = req.params?.id || req.body?.id;
   // console.log(id);
@@ -32,7 +32,7 @@ app.get('/user/:id/order', (req, res) => {
   console.log(req.params);
   console.log(req.query);
   res.send({
-    userId: req.params.id,
+    userId: req.params.userId,
     orderId: req.query.orderId
   });
 });
