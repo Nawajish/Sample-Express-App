@@ -27,7 +27,7 @@ schemas:
             application/json:
                 schema: User
   queryParameters:
-    id
+    id:
       displayName: User ID
       type: number
       description: ID of an user
