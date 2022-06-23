@@ -1,190 +1,36 @@
 #%RAML 0.8
-title: 'Swagger'
-version: 'v1'
+title: Users API
+version: 1
 baseUri: https://express-app-returning-zip.herokuapp.com
 mediaType: application/json
-schemas: 
-    - 
-        Order: |
-                {
-                  "type" : "object",
-                  "properties" : {
-                    "petId" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    },
-                    "quantity" : {
-                      "type" : "integer",
-                      "format" : "int32"
-                    },
-                    "id" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    },
-                    "shipDate" : {
-                      "type" : "string",
-                      "format" : "date-time"
-                    },
-                    "complete" : {
-                      "type" : "boolean"
-                    },
-                    "status" : {
-                      "type" : "string",
-                      "description" : "Order Status",
-                      "enum" : [ "placed", "approved", "delivered" ]
-                    }
-                  },
-                  "xml" : {
-                    "name" : "Order"
-                  }
-                }
-        Category: |
-                {
-                  "type" : "object",
-                  "properties" : {
-                    "name" : {
-                      "type" : "string"
-                    },
-                    "id" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    }
-                  },
-                  "xml" : {
-                    "name" : "Category"
-                  }
-                }
-        User: |
-                {
-                  "type" : "object",
-                  "properties" : {
-                    "firstName" : {
-                      "type" : "string"
-                    },
-                    "lastName" : {
-                      "type" : "string"
-                    },
-                    "password" : {
-                      "type" : "string"
-                    },
-                    "userStatus" : {
-                      "type" : "integer",
-                      "format" : "int32",
-                      "description" : "User Status"
-                    },
-                    "phone" : {
-                      "type" : "string"
-                    },
-                    "id" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    },
-                    "email" : {
-                      "type" : "string"
-                    },
-                    "username" : {
-                      "type" : "string"
-                    }
-                  },
-                  "xml" : {
-                    "name" : "User"
-                  }
-                }
-        Tag: |
-                {
-                  "type" : "object",
-                  "properties" : {
-                    "name" : {
-                      "type" : "string"
-                    },
-                    "id" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    }
-                  },
-                  "xml" : {
-                    "name" : "Tag"
-                  }
-                }
-        ApiResponse: |
-                {
-                  "type" : "object",
-                  "properties" : {
-                    "code" : {
-                      "type" : "integer",
-                      "format" : "int32"
-                    },
-                    "type" : {
-                      "type" : "string"
-                    },
-                    "message" : {
-                      "type" : "string"
-                    }
-                  }
-                }
-        Pet: |
-                {
-                  "type" : "object",
-                  "required" : [ "photoUrls", "name" ],
-                  "properties" : {
-                    "photoUrls" : {
-                      "type" : "array",
-                      "xml" : {
-                        "wrapped" : true
-                      },
-                      "items" : {
-                        "type" : "string",
-                        "xml" : {
-                          "name" : "photoUrl"
-                        }
-                      }
-                    },
-                    "name" : {
-                      "type" : "string",
-                      "example" : "doggie"
-                    },
-                    "id" : {
-                      "type" : "integer",
-                      "format" : "int64"
-                    },
-                    "category" : {
-                      "type" : "ref",
-                      "refFormat" : "INTERNAL",
-                      "$ref" : "#/definitions/Category",
-                      "simpleRef" : "Category"
-                    },
-                    "tags" : {
-                      "type" : "array",
-                      "xml" : {
-                        "wrapped" : true
-                      },
-                      "items" : {
-                        "type" : "ref",
-                        "refFormat" : "INTERNAL",
-                        "$ref" : "#/definitions/Tag",
-                        "simpleRef" : "Tag"
-                      }
-                    },
-                    "status" : {
-                      "type" : "string",
-                      "description" : "pet status in the store",
-                      "enum" : [ "available", "pending", "sold" ]
-                    }
-                  },
-                  "xml" : {
-                    "name" : "Pet"
-                  }
-                }
-/store/inventory: 
-    get: 
-        description: Returns a map of status codes to quantities
-        responses: 
-            "200": 
-                description: successful operation
-                body: 
-                    application/json: 
-                        schema: |
-                            {
-                              "type" : "object",
-                              "properties" : { }
-                            }
+schemas:
+- Order: |
+    {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "number"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+/users:
+  displayName: retrieve all orders
+  /{userId}/order:
+    displayName: access user's orders
+    get:      
+      description: retrieve a user's picture      
+      queryParameters:
+        orderId:
+          description: Order Id
+          type: integer
+          required: true
+          example: 1
+      responses:
+        200:
+          body:
+            application/json:
+                schema: Order
