@@ -31,9 +31,11 @@ app.get('/user/:userId/order', (req, res) => {
   // res.send(`User ${id}`);
   console.log(req.params);
   console.log(req.query);
+  console.log(req.body);
+
   res.send({
-    userId: req.params.userId,
-    orderId: req.query.orderId
+    userId: req.params?.userId || req.body?.userId,
+    orderId: req.query?.orderId || req.body?.orderId
   });
 });
 
