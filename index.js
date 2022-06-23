@@ -25,17 +25,14 @@ app.get('/raml.zip', async (req, res) => {
 });
 
 app.get('/user/:userId/order', (req, res) => {
-  // get id from request params or query string or body
-  // const id = req.params?.id || req.body?.id;
-  // console.log(id);
-  // res.send(`User ${id}`);
-  console.log(req.params);
-  console.log(req.query);
-  console.log(req.body);
+  const reqBody = req.body.run ? req.body.run : req.body;
+  const params = reqBody?.params;
+
+  const { queryParameters, uriParameters } = params._testaction.input.formData;
 
   res.send({
-    userId: req.params?.userId || req.body?.userId,
-    orderId: req.query?.orderId || req.body?.orderId
+    userId: queryParameters.orderId,
+    orderId: uriParameters.userId
   });
 });
 
