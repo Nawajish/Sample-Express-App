@@ -25,6 +25,7 @@ app.get('/raml.zip', async (req, res) => {
 });
 
 app.get('/user/:userId/order', (req, res) => {
+  console.log(req);
   const reqBody = req.body.run ? req.body.run : req.body;
   const params = reqBody?.params;
 
@@ -32,6 +33,7 @@ app.get('/user/:userId/order', (req, res) => {
 
   console.log(queryParameters);
   console.log(uriParameters);
+
 
   res.send({
     userId: queryParameters.orderId,

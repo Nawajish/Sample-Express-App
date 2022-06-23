@@ -4,7 +4,7 @@ version: 1
 baseUri: https://express-app-returning-zip.herokuapp.com
 mediaType: application/json
 schemas:
-- Order: |
+- User: |
     {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type" : "object",
@@ -19,18 +19,18 @@ schemas:
       }
 /users:
   displayName: retrieve all orders
-  /{userId}/order:
-    displayName: access user's orders
-    get:      
-      description: retrieve a user's picture      
-      queryParameters:
-        orderId:
-          description: Order Id
-          type: integer
-          required: true
-          example: 1
+  /{userId}:
+    displayName: access an user
+    get:
+      description: retrieve a user's order
+      # queryParameters:
+      #   orderId:
+      #     description: Order Id
+      #     type: integer
+      #     required: true
+      #     example: 1
       responses:
         200:
           body:
             application/json:
-                schema: Order
+                schema: User

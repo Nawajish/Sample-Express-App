@@ -19,7 +19,7 @@ schemas:
         }
       }
 /user:
-  /{id}:
+  /{userId}:
     get:
       responses:
         200:
@@ -28,7 +28,7 @@ schemas:
                 schema: User
 /user:
   queryParameters:
-    id:
+    userId:
       displayName: User ID
       type: number
       description: ID of an user
